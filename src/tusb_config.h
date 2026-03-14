@@ -47,17 +47,23 @@
 #  define CFG_TUSB_MCU				OPT_MCU_SAME5X
 #  define CFG_TUSB_MEM_SECTION		/* nothing */
 #  define CFG_TUSB_MEM_ALIGN		__attribute__ ((aligned(4)))
+//#  define CFG_TUSB_RHPORT0_MODE     (OPT_MODE_DEVICE | OPT_MODE_FULL_SPEED)
+#  define CFG_TUSB_RHPORT0_MODE     (OPT_MODE_DEVICE)
 # elif defined(__SAME70Q20B__)
 #  define CFG_TUSB_MCU				OPT_MCU_SAMX7X
 #  define CFG_TUSB_MEM_SECTION		__attribute__((section(".ram_nocache")))
 #  define CFG_TUSB_MEM_ALIGN		__attribute__ ((aligned(4)))
+//#  define CFG_TUSB_RHPORT0_MODE     (OPT_MODE_DEVICE | OPT_MODE_FULL_SPEED)
+#  define CFG_TUSB_RHPORT0_MODE     (OPT_MODE_DEVICE)
+# elif defined(STM32H7)
+#  define CFG_TUSB_MCU				OPT_MCU_STM32H7
+#  define CFG_TUSB_MEM_SECTION		__attribute__((section(".ram_nocache")))
+#  define CFG_TUSB_MEM_ALIGN		__attribute__ ((aligned(4)))
+#  define CFG_TUSB_RHPORT0_MODE (OPT_MODE_DEVICE | OPT_MODE_FULL_SPEED)
 # else
 # error Unsupported MCU
 # endif
 #endif
-
-//#define CFG_TUSB_RHPORT0_MODE     (OPT_MODE_DEVICE | OPT_MODE_FULL_SPEED)
-#define CFG_TUSB_RHPORT0_MODE     (OPT_MODE_DEVICE)
 
 #ifndef CFG_TUSB_OS
 # define CFG_TUSB_OS              OPT_OS_FREERTOS
